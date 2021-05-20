@@ -9,7 +9,7 @@
 ## Application screenshosts
 
 <div style="float:right; margin:auto;">
-  <img src="Screenshots/image1.jpg" height="400">
+  <img src="Screenshots/image1.jpg" height="400" width="300">
   <img src="Screenshots/image2.jpg" height="400">
   <img src="Screenshots/image3.jpg" height="400">
   <img src="Screenshots/image4.jpg" height="400">
