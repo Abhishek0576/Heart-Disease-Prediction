@@ -9,15 +9,30 @@
 ## Application screenshosts
 
 <div style="float:right; margin:auto;">
-  <h3> Home Page </h3>
-  <img src="Screenshots/image1.jpg" >
-  <img src="Screenshots/image2.jpg" >
-  <img src="Screenshots/image3.jpg" >
-  <img src="Screenshots/image4.jpg" >
-  <img src="Screenshots/image5.jpg" >
-  <img src="Screenshots/image6.jpg" >
-  <img src="Screenshots/image7.jpg" >
-  <img src="Screenshots/image8.jpg" >
-  <img src="Screenshots/image9.jpg" >
-  <img src="Screenshots/image10.jpg"> 
+  <h6> Home Page </h6>
+  <img src="Screenshots/image1.jpg" > <br>
+  
+  <h6> User Page </h6>
+  <img src="Screenshots/image2.jpg" > <br>
+  
+  <h6> Heart Analysis Page </h6>
+  <img src="Screenshots/image3.jpg" > <br>
+  
+  <h6> Comparsion of classification models </h6>
+  <img src="Screenshots/image4.jpg" > <br>
+  
+  <h6> Feedback Page </h6>
+  <img src="Screenshots/image5.jpg" > <br>
+  
+  <h6> List of available Doctors </h6>
+  <img src="Screenshots/image6.jpg" > <br>
+  
+  <h6> List of Users </h6>
+  <img src="Screenshots/image8.jpg" > <br>
+  
+  <h6> Training Data </h6>
+  <img src="Screenshots/image9.jpg" > <br>
+  
+  <h6> Feedbacks List page </h6>
+  <img src="Screenshots/image10.jpg"> <br>
 </div>  
