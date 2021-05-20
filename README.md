@@ -9,14 +9,14 @@
 ## Application screenshosts
 
 <div style="float:right; margin:auto;">
-  <img src="Screenshots/image1.jpg" height="500">
-  <img src="Screenshots/image2.jpg" height="500">
-  <img src="Screenshots/image3.jpg" height="500">
-  <img src="Screenshots/image4.jpg" height="500">
-  <img src="Screenshots/image5.jpg" height="500">
-  <img src="Screenshots/image6.jpg" height="500">
-  <img src="Screenshots/image7.jpg" height="500">
-  <img src="Screenshots/image8.jpg" height="500">
-  <img src="Screenshots/image9.jpg" height="500">
-  <img src="Screenshots/image10.jpg" height="500"> 
+  <img src="Screenshots/image1.jpg" height="400">
+  <img src="Screenshots/image2.jpg" height="400">
+  <img src="Screenshots/image3.jpg" height="400">
+  <img src="Screenshots/image4.jpg" height="400">
+  <img src="Screenshots/image5.jpg" height="400">
+  <img src="Screenshots/image6.jpg" height="400">
+  <img src="Screenshots/image7.jpg" height="400">
+  <img src="Screenshots/image8.jpg" height="400">
+  <img src="Screenshots/image9.jpg" height="400">
+  <img src="Screenshots/image10.jpg" height="400"> 
 </div>  
