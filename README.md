@@ -9,6 +9,7 @@
 ## Application screenshosts
 
 <div style="float:right; margin:auto;">
+  <h3> Home Page </h3>
   <img src="Screenshots/image1.jpg" >
   <img src="Screenshots/image2.jpg" >
   <img src="Screenshots/image3.jpg" >
