@@ -12,7 +12,7 @@
   <h6> 1. Home Page </h6>
   <img src="Screenshots/image1.jpg" > <br><br>
   
-  <h4> User Section </h4> <br>
+  <h4> User Section </h4>
   <h6> 2. User Page </h6>
   <img src="Screenshots/image2.jpg" > <br><br>
   
@@ -25,8 +25,7 @@
   <h6> 5. Feedback Page </h6>
   <img src="Screenshots/image5.jpg" > <br><br>
   
-  <h4> Admin Section </h4> <br>
-  
+  <h4> Admin Section </h4> 
   <h6> 6. List of available Doctors </h6>
   <img src="Screenshots/image6.jpg" > <br><br>
   
