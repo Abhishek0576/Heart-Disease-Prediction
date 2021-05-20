@@ -9,30 +9,33 @@
 ## Application screenshosts
 
 <div style="float:right; margin:auto;">
-  <h6> Home Page </h6>
+  <h6> 1. Home Page </h6>
   <img src="Screenshots/image1.jpg" > <br><br>
   
-  <h6> User Page </h6>
+  <h4> Admin Section </h4> <br>
+  <h6> 2. User Page </h6>
   <img src="Screenshots/image2.jpg" > <br><br>
   
-  <h6> Heart Analysis Page </h6>
+  <h6> 3. Heart Analysis Page </h6>
   <img src="Screenshots/image3.jpg" > <br><br>
   
-  <h6> Comparsion of classification models </h6>
+  <h6> 4. Comparsion of classification models </h6>
   <img src="Screenshots/image4.jpg" > <br><br>
   
-  <h6> Feedback Page </h6>
+  <h6> 5. Feedback Page </h6>
   <img src="Screenshots/image5.jpg" > <br><br>
   
-  <h6> List of available Doctors </h6>
+  <h4> Admin Section </h4> <br>
+  
+  <h6> 6. List of available Doctors </h6>
   <img src="Screenshots/image6.jpg" > <br><br>
   
-  <h6> List of Users </h6>
+  <h6> 7. List of Users </h6>
   <img src="Screenshots/image8.jpg" > <br><br>
   
-  <h6> Training Data </h6>
+  <h6> 8. Training Data </h6>
   <img src="Screenshots/image9.jpg" > <br><br>
   
-  <h6> Feedbacks List page </h6>
+  <h6> 9. Feedbacks List page </h6>
   <img src="Screenshots/image10.jpg"> <br><br>
 </div>  
