@@ -12,7 +12,7 @@
   <h6> 1. Home Page </h6>
   <img src="Screenshots/image1.jpg" > <br><br>
   
-  <h4> Admin Section </h4> <br>
+  <h4> User Section </h4> <br>
   <h6> 2. User Page </h6>
   <img src="Screenshots/image2.jpg" > <br><br>
   
