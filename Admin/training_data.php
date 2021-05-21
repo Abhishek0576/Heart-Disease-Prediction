@@ -39,19 +39,25 @@
             }
             th{
               font-weight: 650;
-              font-size: 10px;
+              font-size: 12px;
               text-transform: uppercase;
               text-align: center;
-              padding: 25px;
+              padding: 50px;
               color: #555;
             }
             td{
               font-weight: 300;
-              font-size: 12px;
+              font-size: 13px;
               text-align: center;
             }
-            table { border: none; height: 380px; display: block; overflow: scroll; border-radius: 5px; }
-            td, th { border: 2px ridge; }
+
+            table { 
+              border: 0.5px solid gray; 
+              height: 380px; 
+              overflow: scroll; 
+              border-radius: 5px; 
+              scroll-behavior: smooth; 
+            }
             
             table::-webkit-scrollbar {
               width: 4px; 
@@ -105,25 +111,67 @@
                   </li>
                 </ul>
                 
-                <div class="table-responsive-lg rounded p-0"> 
-                        <?php
-                            $output =  shell_exec("python temp.py");
-                            echo $output;
-                        ?>
+                <div class="d-flex flex-row-reverse"> 
+                      <form id="form">
+                          <select id="select_tdata" class="form-select form-select-sm shadow-none">
+                              <option value="heart_statlog_cleveland_hungary_final.csv">1.&nbsp; Heart Analysis Dataset</option>
+                              <option value="framingham.csv">2.&nbsp; Ten Year CHD &nbsp;Dataset</option>
+                          </select>
+                      </form>
+                </div>
+
+                <div class="rounded d-flex justify-content-center" id="tData1"> 
+                    <?php
+                        include('tdata1.html');
+                    ?>
+                </div>
+
+                <div class="rounded d-flex justify-content-center d-none" id="tData2"> 
+                    <?php
+                        include('tdata2.html');
+                    ?>
                 </div>
             
             </div>
          </div>  
     
+         <div class="modal fade" id="LoadingModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+            <div class="modal-content border-0" style="background-color: transparent;">
+              <div class="modal-body text-center">
+                 <embed src="../Images/loading.gif" class="img-fluid" height="125" width="125">
+              </div>
+            </div>
+          </div>
+        </div>
+
     </body> 
 
 </html>
 
-
 <script>
-    $(document).ready(function(){
-        $("table1").addClass("table");
-        $("table1").addClass("table-hover");
-        $("table1").addClass("table-bordered");  
+$(document).ready(function()
+{    
+    $('#LoadingModal').modal({
+        backdrop: 'static',
+        keyboard: false,
     });
+
+    $("#select_tdata").change(function()
+    {
+       var tableName = $.trim($("#select_tdata option:selected").val());
+       //alert(tableName);
+
+       if(tableName === 'heart_statlog_cleveland_hungary_final.csv')
+       {
+          $("#tData1").removeClass('d-none');
+          $("#tData2").addClass('d-none');
+       }
+       else
+       {
+          $("#tData2").removeClass('d-none');
+          $("#tData1").addClass('d-none');
+       }
+    });
+});      
 </script>
