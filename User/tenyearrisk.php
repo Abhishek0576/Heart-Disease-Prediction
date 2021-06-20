@@ -11,7 +11,7 @@
 <html>
   
     <head> 
-        <title> Heart Disease Prediction | Admin </title> 
+        <title> <?php echo $_SESSION["uname"] ?> | 10Year Risk </title> 
         <link rel="stylesheet" href="../bootstrap5/css/bootstrap.min.css">
         <script src="../bootstrap5/js/bootstrap.bundle.js"> </script>
         <link rel="stylesheet" href="../Font-Awesome/css/all.css">
@@ -65,6 +65,30 @@
            td.a { width: 40%; }
            td.c { width: 50%; }
 
+           .advice-block
+           {   
+              background-color: #e5e5e5;
+              padding: 30px 30px;
+              margin-top: 30px;
+           }
+           .advice 
+           { 
+               padding-bottom: 0;
+               text-transform: uppercase;
+               font-size: 16px;
+               letter-spacing: .025em;
+               font-weight: 700;
+               color: #595959; 
+           }
+           .advice-content 
+           {
+               padding-top: 10px;
+               font-size: 14px;
+               letter-spacing: .025em;
+               font-weight: 400;
+               color: #595959;
+           }
+
            @media (max-width: 1000px) 
            { 
               #analysis_form { padding: 0px; margin-top: 15px; }
@@ -74,7 +98,7 @@
     
     </head>
 
-    <body class="p-5 bg-danger">
+    <body class="p-5" style="background-color: #ff4d4d;">
         <div class="container rounded shadow" style="background-color: #fefefe;"> 
             
             <div class="row text-center shadow py-3 rounded">
@@ -89,12 +113,12 @@
                 <ul class="nav nav-tabs shadow-sm rounded mb-5 p-0" >
                     <li class="nav-item">
                       <a class="nav-link" href="user.php"> <i class="fas fa-user"></i> User</a>
-                    </li>  
-                    <li class="nav-item">
-                      <a class="nav-link" href="heart_analysis.php"> <i class="fas fa-heartbeat"></i> Heart Analysis</a>
-                    </li>
+                    </li> 
                     <li class="nav-item">
                       <a class="nav-link active" aria-current="page"> <i class="fas fa-chart-area"></i> TenYear CHD</a>
+                    </li> 
+                    <li class="nav-item">
+                      <a class="nav-link" href="heart_analysis.php"> <i class="fas fa-heartbeat"></i> Heart Analysis</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="doctors.php"> <i class="fas fa-user-md"></i> Doctors</a>
@@ -111,7 +135,7 @@
                     <div class="col-md-8 p-0">
                         <form action="" method="post" id="analysis_form" class="">
                            
-                            <div id="response" class="p-0 mb-1 text-center">  </div>
+                                <div id="response" class="p-0 mb-1 text-center">  </div>
 
                                 <div class="form-group p-4 py-0">
                                     <h3 class="mb-4 mt-4 title1">10year heart risk</h3> 
@@ -158,20 +182,6 @@
                                         </div>
                                     </div>  
                                 </div> 
-
-                                <!-- <div class="form-group p-4">
-                                    <div class="row">   
-                                        <div class="col-md-6 align-self-center">
-                                            <label>HDL Cholesterol</label>             
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="input-group input-group-sm">  
-                                                <input type="number" id="hdlcholestrol" name="hdlcholestrol" maxlength="3" placeholder="" class="form-control form-control-sm  shadow-none" required>
-                                                <span class="input-group-text"><small>mg/dL</small></span>
-                                            </div> 
-                                        </div>
-                                    </div>  
-                                </div> --> 
     
                                 <div class="form-group p-4">
                                     <div class="row">   
@@ -243,19 +253,23 @@
                                     </div>  
                                 </div>
 
-                                <div class="form-group p-4 mb-2">
+                                <div class="form-group p-4 pt-1 mb-2">
                                     <div class="d-flex flex-row-reverse"> 
                                           <button type="submit" id="submit" name="submit" size="" class="btn btn-sm btn-primary shadow-none"> SUBMIT&nbsp;<i class="fa"></i> </button> 
                                     </div> 
                                 </div>
-    
-                            </div> 
-                            
                         </form>
-                    </div>        
-                </div>  
-
-            </div> 
+                        <div class="container rounded advice-block shadow-sm mt-4">
+                             <label class="advice">ADVICE:</label>
+                             <div class="advice-content">
+                                 Patients with high risk scores should be
+                                 <label> 1. Having higher due to (smoking, exercise, weight, diet, etc) and also managed with blood pressure. </label>
+                                 <label> 2. Instructed to do their heart disease analysis ASAP. </label>
+                             </div>
+                        </div> 
+                    </div>
+                </div>        
+            </div>  
         </div>  
        
         <div class="modal fade" id="LoadingModal" tabindex="-1" role="dialog">
@@ -292,6 +306,7 @@ $(document).ready(function(){
 
        $("#submit i").addClass("fa-spinner fa-spin");
        $("#LoadingModal").modal('show');
+       $(".advice-block").addClass('d-none');
 
        $.post("process_tenyearrisk.php",dataString,function(res)
        {
@@ -300,6 +315,7 @@ $(document).ready(function(){
               $("#submit i").removeClass("fa-spinner fa-spin");
               window.scrollTo(0,0);
               $("#response").html(res).show();
+              $(".advice-block").removeClass('d-none');
        });
    });
    

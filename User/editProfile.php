@@ -2,25 +2,27 @@
    error_reporting(E_ALL ^ E_NOTICE);
    include("../connection.php");
    session_start();
-   if(!empty($_SESSION["user"]))
+   if(empty($_SESSION["user"]))
    {
-       echo "<script> location.replace('user.php'); </script>";
+       echo "<script> location.replace('register.php'); </script>";
    }
-   $sql = "select max(id) as new_id from user";
+   $sql = "select * from user where id = '".$_SESSION["user"]."'";
    $res = mysqli_query($conn,$sql);
    $nr = mysqli_num_rows($res);
-   $row = mysqli_fetch_assoc($res);
    if($nr==1)
    {
-       $new_id = $row['new_id'] + 1; 
+       $row = mysqli_fetch_assoc($res);
    }
-   else { $new_id = '101'; } 
+   else 
+   { 
+       echo "<script> location.replace('register.php'); </script>"; 
+   }
 ?>
 
 <html>
   
     <head> 
-        <title> User | Register </title> 
+        <title> <?php echo $_SESSION["uname"] ?> | Edit Profile </title> 
         <link rel="stylesheet" href="../bootstrap5/css/bootstrap.min.css">
         <script src="../bootstrap5/js/bootstrap.bundle.js"> </script>
         <link rel="stylesheet" href="../Font-Awesome/css/all.css">
@@ -79,29 +81,39 @@
                        
                       <div id="response" class="col-md-12 p-2 text-center">  </div>
             
-                      <h3 class="mb-4 text-primary font-italic sc text-center">user registration</h3> 
+                      <h3 class="mb-4 text-primary font-italic sc text-center">update profile</h3> 
                       <div class="row">
                         
                         <div class="col-md-4 px-4 py-3">      
                             <div class="form-group">                
                                 <label>Name</label>
-                                <input type="text" id="name" name="name" class="form-control form-control-sm" required /> 
+                                <input type="text" id="name" name="name" class="form-control form-control-sm" value="<?php echo $row['name']; ?>" required /> 
                             </div> 
                         </div>
                 
                         <div class="col-md-4 px-4 py-3">      
                             <div class="form-group">                
                                 <label>Age</label>
-                                <input type="number" id="age" name="age" value="25" min="25" max="60" class="form-control form-control-sm" required />  
+                                <input type="number" id="age" name="age" min="25" max="60" class="form-control form-control-sm" value="<?php echo $row['age']; ?>" required />  
                             </div> 
                         </div>
                         
                         <div class="col-md-4 px-4 py-3">      
                             <div class="form-group">   
                                <label>Gender</label> 
-                               <select class="form-select form-select-sm form-control" id="gender" name="gender" required>
-                                 <option value="Male">Male</option>
-                                 <option value="Female">Female</option>
+                               <select class="form-select form-select-sm form-control" id="gender" name="gender" value="<?php echo $row['gender']; ?>" required>
+                                 <?php 
+                                    if($row['gender'] == "Male")
+                                    {
+                                        echo "<option value='Male' selected >Male</option>";
+                                        echo "<option value='Female' >Female</option>";
+                                    } 
+                                    else
+                                    {
+                                        echo "<option value='Male' >Male</option>";
+                                        echo "<option value='Female' selected >Female</option>";
+                                    }
+                                 ?>
                                </select>        
                             </div> 
                         </div>
@@ -109,14 +121,14 @@
                         <div class="col-md-6 px-4 py-3">      
                             <div class="form-group">           
                                 <label>Mobile</label>
-                                <input type="text" id="mobile" name="mobile" class="form-control form-control-sm" maxlength="10" required /> 
+                                <input type="text" id="mobile" name="mobile" class="form-control form-control-sm" maxlength="10" value="<?php echo $row['mobile']; ?>" required /> 
                             </div> 
                         </div>
                 
                         <div class="col-md-6 px-4 py-3">      
                             <div class="form-group">  
                                 <label>Email ID</label>
-                                <input type="text" id="emailid" name="emailid" class="form-control form-control-sm" required />         
+                                <input type="text" id="email" name="email" class="form-control form-control-sm" value="<?php echo $row['email']; ?>" required />         
                             </div> 
                         </div>
 
@@ -124,7 +136,7 @@
                         <div class="col-md-6 px-4 py-3">      
                             <div class="form-group">
                                 <label>User ID</label>
-                                <input type="text" class="form-control form-control-sm" id="id" name="id" value="<?php echo $new_id; ?>" readonly>
+                                <input type="text" class="form-control form-control-sm" id="id" name="id" value="<?php echo $row['id'] ?>" readonly>
                             </div> 
                         </div>
                 
@@ -132,7 +144,7 @@
                             <div class="form-group"> 
                                 <label>Password</label>
                                 <div class="input-group"> 
-                                    <input type="password" class="form-control form-control-sm" id="pwd" name="pwd" placeholder="" required>
+                                    <input type="password" class="form-control form-control-sm" id="pwd" name="pwd" value="<?php echo $row['pwd']; ?>" required>
                                     <span class="input-group-text fa fa-eye-slash" id="showhide"></span>  
                                 </div>       
                             </div> 
@@ -141,12 +153,12 @@
                         <div class="col-md-12 px-4 py-3 mb-3">
                              <div class="form-group">    
                                 <label>Address</label> </div>  
-                                <textarea class="form-control" id="address" name="address" required style="resize: none; height: 100px"></textarea> 
+                                <textarea class="form-control" id="address" name="address" required style="resize: none; height: 100px"><?php echo $row['address']; ?></textarea> 
                              </div>    
                         </div>
 
                         <div class="col-md-12 p-2">      
-                            <button type="submit" id="submit" name="submit" size="20" class="btn btn-primary btn-sm"> SIGNUP&nbsp;<i class="fa"></i> </button> 
+                            <button type="submit" id="submit" name="submit" size="20" class="btn btn-primary btn-sm shadow-none"> UPDATE&nbsp;<i class="fa"></i> </button> 
                         </div>
 
                       </div>   
@@ -168,7 +180,7 @@ $(document).ready(function(){
        $("#response").show(200);
        var dataString = $(this).serialize();
        //alert(dataString);
-       $.post("process_register.php",dataString,function(res)
+       $.post("process_editProfile.php",dataString,function(res)
        {
           $("#response").html(res);
           window.scrollTo(0,0);

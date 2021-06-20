@@ -11,7 +11,7 @@
 <html>
   
     <head> 
-        <title> Heart Disease Prediction | Admin </title> 
+        <title> Admin | Doctors Details </title> 
         <link rel="stylesheet" href="../bootstrap5/css/bootstrap.min.css">
         <script src="../bootstrap5/js/bootstrap.bundle.js"> </script>
         <link rel="stylesheet" href="../Font-Awesome/css/all.css">
@@ -27,11 +27,6 @@
             .card:hover { opacity: 0.8; } 
             #login_form { padding: 45px;}
             .link, span { cursor: pointer; }
-            .form-control:focus 
-            {
-              border-color: #007bff;
-              box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 4px rgba(50, 50, 128, 0.6);
-            }
             form label {
               font-weight: 630;
               font-size: 14px;
@@ -44,6 +39,7 @@
               font-size: 11px;
               padding: 25px;
               text-transform: uppercase;
+              color: #555;
             }
             td{
               font-weight: 300;
@@ -71,7 +67,7 @@
 
     </head>
    
-    <body class="p-5 bg-danger">
+    <body class="p-5" style="background-color: #ff4d4d;">
 
         <div class="container rounded shadow" style="background-color: #fefefe;"> 
             
@@ -154,10 +150,8 @@
                                        <th class='text-center px-4 py-3'>".$row['email']."</th> 
                                        <th class='text-center px-4 py-3'>".$row['address']."</th>
                                        <th class='text-center px-4 py-3'> 
-                                          <div class='btn-group'>   
-                                             <a class='btn btn-sm btn-success msg_btn rounded' data-toggle='modal' data-target='#Message_Modal' id='$row[fid]'> <i class='fa fa-comment'></i> </a>
-                                             &nbsp;
-                                             <a class='btn btn-sm btn-danger del_btn rounded' data-toggle='modal' data-target='#Delete_Modal' id='$row[fid]'> <i class='fa fa-trash'></i> </a>
+                                          <div class='btn-group'>  
+                                             <a class='btn btn-sm btn-danger del_btn rounded' data-bs-toggle='modal' data-bs-target='#delModal' id='$row[id]'> <i class='fa fa-trash'></i> </a>
                                           </div>  
                                        </th>
                                     </td>   
@@ -174,9 +168,9 @@
            <div class="modal-dialog">
              <div class="modal-content">
                
-             <div class="modal-header border-0">
-                 <h5 class="modal-title text-center" id="">Doctor details</h5>
-                 <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+             <div class="modal-header">
+                 <h6 class="modal-title text-secondary" id="">Doctor details</h6>
+                 <button type="button" class="btn-close btn-sm shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                
                <div class="modal-body">
@@ -184,34 +178,34 @@
                      <div class="row"> 
                          <div class="form-group mb-4">   
                                      <label class="mb-1"> Name </label>
-                                     <input type="text" id="name" name="name" class="form-control form-control-sm" required /> 
+                                     <input type="text" id="name" name="name" class="form-control form-control-sm shadow-none" required /> 
                          </div> 
                          <div class="form-group mb-4 col-md-6"> 
                                      <label class="mb-1"> Age </label>
-                                     <input type="number" id="age" name="age" min="25" max="60" class="form-control form-control-sm" required /> 
+                                     <input type="number" id="age" name="age" min="25" max="60" class="form-control form-control-sm shadow-none" required /> 
                          </div>     
                          <div class="form-group mb-4 col-md-6">           
                                      <label class="mb-1"> Gender </label>
-                                     <select class="form-select form-select-sm form-control" id="gender" name="gender">
+                                     <select class="form-select form-select-sm form-control shadow-none" id="gender" name="gender">
                                        <option value="Male">Male</option>
                                        <option value="Female">Female</option>
                                      </select> 
                          </div>
                          <div class="form-group mb-4">           
                                      <label class="mb-1"> Specialization </label>
-                                     <input type="text" id="speciality" name="speciality" class="form-control form-control-sm" required />  
+                                     <input type="text" id="speciality" name="speciality" class="form-control form-control-sm shadow-none" required />  
                          </div> 
                          <div class="form-group mb-4 col-md-6">           
                                      <label class="mb-1"> Mobile </label>
-                                     <input type="text" id="mobile" name="mobile" class="form-control form-control-sm" maxlength="10" required />  
+                                     <input type="text" id="mobile" name="mobile" class="form-control form-control-sm shadow-none" maxlength="10" required />  
                          </div>
                          <div class="form-group mb-4 col-md-6">           
                                      <label class="mb-1"> Email ID </label>
-                                     <input type="text" id="emailid" name="emailid" class="form-control form-control-sm" required />  
+                                     <input type="text" id="emailid" name="emailid" class="form-control form-control-sm shadow-none" required />  
                          </div>
                          <div class="form-group mb-4">    
                                     <label class="mb-1"> Address </label>
-                                    <textarea id="address" name="address" required size="120" maxlength="120" placeholder="" rows="6" class="form-control form-control-sm" required></textarea>
+                                    <textarea id="address" name="address" required size="120" maxlength="120" placeholder="" rows="6" class="shadow-none form-control form-control-sm" required></textarea>
                          </div>
                          <div class="form-group d-flex flex-row-reverse">
                               <input type="submit" class="btn-sm shadow-none btn-success mx-1" value="Submit" name="submit" />
@@ -229,6 +223,27 @@
              </div>
            </div>
          </div>
+
+
+         <div class="modal fade" id="delModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h6 class="modal-title text-secondary" id="exampleModalLabel">Doctor Record Deletion</h6>
+                 <button type="button" class="btn-close btn-sm shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4" id="delete_info">
+                     <label class='text-muted alert-id'></label>
+                </div>
+                <div class="modal-footer border-0" id="delete_footer">
+                     <button class='btn btn-sm btn-danger p-1 m-1 float-right shadow-none' data-bs-dismiss='modal'>Close</button>
+                     <input type=submit name=submit value='Remove' class='btn btn-sm btn-primary p-1 m-1 del_confirm float-right shadow-none'/>
+                </div>
+              </div>
+            </div>
+         </div>
+
+
     </body>
 
 </html>    
@@ -238,6 +253,11 @@
   $(document).ready(function()
   {     
      $('#addModal').modal({
+           backdrop: 'static',
+           keyboard: false
+     });
+
+     $('#delModal').modal({
            backdrop: 'static',
            keyboard: false
      });
@@ -253,17 +273,43 @@
             {
               //alert(res);
               $(".modal-body")
-              .html("<div class=''> <h5 class='lead px-2'> <i class='fa fa-check-circle text-success mr-1'></i>  Record added successfully! </h4> </div>");
+              .html("<div class=''> <h5 class='lead px-2'> <i class='fa fa-check-circle text-success mr-1'></i>  Record added successfully! </h5> </div>");
             } 
             else
             {
               //alert(res);
               $(".modal-body")
-              .html("<div class=''> <h5 class='lead px-2'> <i class='fa fa-times-circle text-danger mr-1'></i> Record addition Unsuccessful! </h4> </div>");
+              .html("<div class=''> <h5 class='lead px-2'> <i class='fa fa-times-circle text-danger mr-1'></i> Record addition Unsuccessful! </h5> </div>");
             }
             $(".modal-footer")
               .html("<button class='btn btn-sm btn-danger float-right' onclick='location.reload();'>Close</button>"); 
          });
+     });
+
+     $(document).on('click','.del_btn',function()
+     {
+         var id = $(this).attr("id");
+         //$(this).attr("id","none");
+         $("#delete_info .alert-id").html("Do you really want to remove record with ID : "+id+" ?");
+         $(".alert-id").attr("id",id);
+         //$("#Delete_Modal").modal('show');  
+     });
+
+     $(document).on('click','.del_confirm', function()
+     {
+   	   var id = $(".alert-id").attr("id");
+       //$(".alert-id").attr("id","none"); 
+       $.ajax({
+              url:"process_doctor.php",
+              method:"POST",
+              data:{action:'delete',id:id},
+              success:function(data)
+              {
+              	 $('#delete_info').html(data);
+                 $('#delete_footer').hide();
+                 //$('#Delete_Modal').modal('show');                             
+              }
+           });   
      });
 
   });

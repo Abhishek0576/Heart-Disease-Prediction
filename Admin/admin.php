@@ -11,7 +11,7 @@
 <html>
   
     <head> 
-        <title> Heart Disease Prediction | Admin </title> 
+        <title> Admin </title> 
         <link rel="stylesheet" href="../bootstrap5/css/bootstrap.min.css">
         <script src="../bootstrap5/js/bootstrap.bundle.js"> </script>
         <link rel="stylesheet" href="../Font-Awesome/css/all.css">
@@ -30,7 +30,7 @@
 
     </head>
    
-    <body class="p-5 bg-danger">
+    <body class="p-5" style="background-color: #ff4d4d;">
 
         <?php
             $output =  shell_exec("python temp.py");
@@ -78,7 +78,7 @@
                 
                 <div class="row h-100 justify-content-center align-items-center">
                     <div class="col-10 col-md-6 col-lg-4 p-0">
-                                                   
+                                        
                     </div>
                 </div>
             

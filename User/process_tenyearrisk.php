@@ -33,7 +33,7 @@
             {
               echo "<div class='alert alert-success alert-dismissible fade show shadow-sm' role='alert'>  
                      <i class='fa fa-check-circle mr-1'></i> &nbsp; <strong> 
-                     Heart status - Healthy </strong> <label>(".$output."%)</label>
+                     Heart status - Healthy </strong> <label>(TenYear Heart Risk - ".$output."%)</label>
                      <button type='button' class='btn-close btn-sm outline-none shadow-none' data-bs-dismiss='alert' aria-label='Close'></button>
                  </div>";
             }
@@ -41,7 +41,7 @@
             {
               echo "<div class='alert alert-danger alert-dismissible fade show shadow-sm' role='alert'>  
                        <i class='fa fa-exclamation-triangle mr-1'></i> &nbsp; 
-                       <strong> Heart status - Suffering from Heart Disease </strong> <label>(".$output."%)</label>
+                       <strong> Heart status - Suffering from Heart Disease </strong> <label>(TenYear Heart Risk - ".$output."%)</label>
                        <button type='button' class='btn-close btn-sm outline-none shadow-none' data-bs-dismiss='alert' aria-label='Close'></button>
                     </div>";
             }

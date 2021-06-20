@@ -11,7 +11,7 @@
 <html>
   
     <head> 
-        <title> Heart Disease Prediction | Home </title> 
+        <title> User | Login </title> 
         <link rel="stylesheet" href="../bootstrap5/css/bootstrap.min.css">
         <script src="../bootstrap5/js/bootstrap.bundle.js"> </script>
         <link rel="stylesheet" href="../Font-Awesome/css/all.css">
@@ -35,7 +35,7 @@
 
     </head>
    
-    <body class="p-5 bg-danger">
+    <body class="p-5" style="background-color: #ff4d4d;">
 
         <?php
             //$output = shell_exec("python temp.py");
@@ -56,8 +56,8 @@
                 </div>
                 <div class="row h-100 justify-content-center align-items-center p-2 mb-2">
                     <div class="col-10 col-md-6 col-lg-4 p-0">
+                        <div id="response" class="text-center my-4">  </div>
                         <form action="" method="post" id="login_form" class="font-weight-bold text-muted shadow border border-white rounded">
-                            <div id="response" class="text-center my-4">  </div>
                             <h3 class="mb-5 text-center text-primary font-italic sc">user login</h3>
                             <div class="form-group mb-3 py-2">
                                 <label for="username" class="mb-2 fw-bolder"> User ID </label>

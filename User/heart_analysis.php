@@ -25,7 +25,7 @@
 <html>
   
     <head> 
-        <title> Heart Disease Prediction | Admin </title> 
+        <title> <?php echo $_SESSION["uname"] ?> | Heart Analysis </title> 
         <link rel="stylesheet" href="../bootstrap5/css/bootstrap.min.css">
         <script src="../bootstrap5/js/bootstrap.bundle.js"> </script>
         <link rel="stylesheet" href="../Font-Awesome/css/all.css">
@@ -89,7 +89,7 @@
 
     </head>
    
-    <body class="p-5 bg-danger">
+    <body class="p-5" style="background-color: #ff4d4d;">
 
         <?php
             //$output = shell_exec("python temp.py");
@@ -112,10 +112,10 @@
                     <a class="nav-link" href="user.php"> <i class="fas fa-user"></i> User </a>
                   </li>  
                   <li class="nav-item">
-                    <a class="nav-link active"> <i class="fas fa-heartbeat"></i> Heart Analysis</a>
+                    <a class="nav-link" href="tenyearrisk.php"> <i class="fas fa-chart-area"></i> TenYear CHD</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="tenyearrisk.php"> <i class="fas fa-chart-area"></i> TenYear CHD</a>
+                    <a class="nav-link active"> <i class="fas fa-heartbeat"></i> Heart Analysis</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="doctors.php"> <i class="fas fa-user-md"></i> Doctors</a>
@@ -130,7 +130,7 @@
                 
                 <div class="row justify-content-center align-items-center mt-4">
                   <div class="col-md-8 p-0">
-                      <form action="" method="post" id="analysis_form" class="">
+                      <form action="" method="post" id="analysis_form" class="mb-0 pb-0">
         
                         <div id="response" class="col-md-12 p-0 mb-1 text-center">  </div>
 
@@ -272,7 +272,7 @@
 
                           </div>    
                        </form> 
-                       <div class="models-container d-flex justify-content-center my-4">
+                       <div class="models-container d-none d-flex justify-content-center my-4">
                              
                        </div>
                        <div class="img-container d-none">
@@ -283,15 +283,15 @@
                 </div>
             </div>
 
-            <div class="pb-2" id="report-container" style="display: none;">
+            <div id="report-container" style="display: none;">
               <div class="container text-center p-0 border" id="report" style="display: none;">
                 <div class="row text-center py-3 mb-3 rounded">
                     <div class="col align-self-center">     
-                        <h4 class="mb-3"> <label style="color:red;"> Heart </label> Disease Prediction System</h4>
+                        <h5 class="mb-2"> <label style="color:red;"> Heart </label> Disease Prediction System</h5>
                         <label class="mb-2"> <i> Know your disease - Save your life </i> </label>
                     </div>
                 </div> 
-                <h4 class="mb-2 text-center text-primary font-italic sc">heart analysis report</h4>
+                <h4 class="mb-0 text-center text-primary font-italic sc">heart analysis report</h4>
                 <div class="container">
                      <table>
                         <thead> <tr> <th>PATIENT DETAILS:</th> </tr> </thead>
@@ -322,7 +322,7 @@
                               <tr> <td class="a"> </td> <td> </td> </tr>
                         </tbody> 
                      </table> 
-                     <div class="d-flex flex-row-reverse" id="datetime">  </div>
+                     <div class="d-flex flex-row-reverse p-0 m-0" id="datetime">  </div>
                 </div>
              </div>
              </div>
@@ -357,6 +357,9 @@ $(document).ready(function(){
        e.preventDefault();
        $("#response").hide();
        $("#download").addClass("d-none");
+       $(".img-container").addClass("d-none");
+       $(".models-container").addClass("d-none");
+      
        var dataString = $(this).serialize();
 
        var value = $("#cp option:selected");
@@ -390,6 +393,7 @@ $(document).ready(function(){
               $("#submit i").removeClass("fa-spinner fa-spin");
               $("#download").removeClass("d-none");
               $(".img-container").removeClass("d-none");
+              $(".models-container").removeClass("d-none");
               $(".models-container").load("data.html");
               
               var result = $("#response .alert strong").text();
@@ -410,7 +414,7 @@ $(document).ready(function(){
               $("#score").html("<b>"+score+"</b>");
 
               var d = new Date();
-              var date =  String(d.getDate()).padStart(2,0)+"/"+String(d.getMonth()).padStart(2,0)+"/"+String(d.getFullYear()).padStart(2,0);
+              var date =  String(d.getDate()).padStart(2,0)+"/"+String(d.getMonth()+1).padStart(2,0)+"/"+String(d.getFullYear()).padStart(2,0);
               var time =  String(d.getHours()).padStart(2,0)+":"+String(d.getMinutes()).padStart(2,0)+":"+String(d.getSeconds()).padStart(2,0);
               var dateTime = time+" &nbsp;"+date;
               //alert(dateTime);
@@ -438,7 +442,7 @@ $(document).ready(function(){
             console.log(pdf);
             console.log(window);
             var opt = {
-                margin: 0.28,
+                margin: 0.26,
                 filename: 'HeartReport.pdf',
                 image: { type: 'jpeg', quality: 1 },
                 html2canvas: { scale: 2 },

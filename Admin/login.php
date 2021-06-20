@@ -11,7 +11,7 @@
 <html>
   
     <head> 
-        <title> Heart Disease Prediction | Home </title> 
+        <title> Admin | Login </title> 
         <link rel="stylesheet" href="../bootstrap5/css/bootstrap.min.css">
         <script src="../bootstrap5/js/bootstrap.bundle.js"> </script>
         <link rel="stylesheet" href="../Font-Awesome/css/all.css">
@@ -27,11 +27,6 @@
             .card:hover { opacity: 0.8; } 
             #login_form { padding: 45px;}
             .back { cursor: pointer; }
-            .form-control:focus 
-            {
-              border-color: #007bff;
-              box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 4px rgba(50, 50, 128, 0.6);
-            }
             @media (max-width: 1000px) 
             { 
                #login_form { padding: 20px 30px; margin-top: 15px; }
@@ -40,7 +35,7 @@
 
     </head>
    
-    <body class="p-5 bg-danger">
+    <body class="p-5" style="background-color: #ff4d4d;">
 
         <?php
             //$output = shell_exec("python temp.py");
@@ -66,13 +61,15 @@
                             <h3 class="mb-5 text-center text-primary font-italic sc">admin login</h3>
                             <div class="form-group mb-3 py-2">
                                 <h6 for="username" class="mb-2"><b>Admin ID</b></h6>
-                                <input type="text" class="form-control form-control-sm" id="id" name="id">
+                                <input type="text" class="form-control form-control-sm shadow-none" id="id" name="id">
                             </div>
                             <div class="form-group mb-2 py-2">
                                 <h6 for="password" class="mb-2"><b> Password </b><i class="fa fa-eye-slash ml-1" id="showhide"></i> </h6>
-                                <input type="password" class="form-control form-control-sm" id="pwd" name="pwd">
+                                <input type="password" class="form-control form-control-sm shadow-none" id="pwd" name="pwd">
                             </div>
-                            <button type="submit" name="submit" class="btn btn-primary btn-block btn-sm mt-4 mb-2 shadow">LOGIN <i class="fa"></i></button>
+                            <div class="d-flex flex-row-reverse mt-4 mb-1">
+                                <button type="submit" name="submit" class="btn btn-primary btn-block btn-sm shadow">LOGIN <i class="fa"></i></button>
+                            </div>
                         </form>
                         
                     </div>

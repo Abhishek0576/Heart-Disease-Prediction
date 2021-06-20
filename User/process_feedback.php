@@ -3,6 +3,7 @@
     include("../connection.php");
     $status="";
     extract($_POST);
+    date_default_timezone_set('Asia/Kolkata');
     $date = date("Y/m/d"); 
     $time = date("H:i");      
     $sql = "insert into feedback(name,feedback,date,time) values('$name','$feedback','$date','$time')";

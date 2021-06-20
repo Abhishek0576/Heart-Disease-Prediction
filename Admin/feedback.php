@@ -11,7 +11,7 @@
 <html>
   
     <head> 
-        <title> Heart Disease Prediction | Admin </title> 
+        <title> Admin | Feedback Details </title> 
         <link rel="stylesheet" href="../bootstrap5/css/bootstrap.min.css">
         <script src="../bootstrap5/js/bootstrap.bundle.js"> </script>
         <link rel="stylesheet" href="../Font-Awesome/css/all.css">
@@ -21,7 +21,7 @@
             body { scroll-behavior: smooth;}
             body::-webkit-scrollbar {
               width: 4px; 
-              height: 4px;              /* width of the entire scrollbar */
+              height: 4px;          
             }
             .sc { font-variant: small-caps; }
             .card:hover { opacity: 0.8; } 
@@ -37,11 +37,12 @@
               font-size: 1rem;
               color: #555;
             }
-            table { height: 360px; display: block; overflow-y: scroll; }
+            table { height: 360px; display: block; overflow: scroll; }
             th{
               font-weight: 500;
-              font-size: 12px;
+              font-size: 11.5px;
               text-transform: uppercase;
+              color: #555;
             }
             td{
               vertical-align:middle;
@@ -66,7 +67,7 @@
 
     </head>
    
-    <body class="p-5 bg-danger">
+    <body class="p-5" style="background-color: #ff4d4d;">
 
         <?php
             //$output = shell_exec("python temp.py");
@@ -126,6 +127,7 @@
                                   <th class='text-center px-5 py-3'>Feedback</th>
                                   <th class='text-center px-5 py-3'>Date</th>
                                   <th class='text-center px-5 py-3'>Time</th>
+                                  <th class='text-center px-5 py-3'>Action</th>
                             </thead></tr>";
                          
                          echo "<tbody>";
@@ -139,6 +141,11 @@
                                        <th class='text-center px-5 py-3'>".$row['feedback']."</th>
                                        <th class='text-center px-5 py-3'>".$row['date']."</th> 
                                        <th class='text-center px-5 py-3'>".$row['time']."</th> 
+                                       <th class='text-center px-5 py-3'> 
+                                          <div class='btn-group'>  
+                                             <a class='btn btn-sm btn-danger del_btn rounded' data-bs-toggle='modal' data-bs-target='#delModal' id='$row[id]'> <i class='fa fa-trash'></i> </a>
+                                          </div>  
+                                       </th>
                                     </td>   
                                    </tr>";
                          }
@@ -148,7 +155,65 @@
                 </div>
             </div>
          </div>  
+         
+         <div class="modal fade" id="delModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h6 class="modal-title text-secondary" id="exampleModalLabel">Doctor Record Deletion</h6>
+                 <button type="button" class="btn-close btn-sm shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4" id="delete_info">
+                     <label class='text-muted alert-id'></label>
+                </div>
+                <div class="modal-footer border-0" id="delete_footer">
+                     <button class='btn btn-sm btn-danger p-1 m-1 float-right shadow-none' data-bs-dismiss='modal'>Close</button>
+                     <input type=submit name=submit value='Remove' class='btn btn-sm btn-primary p-1 m-1 del_confirm float-right shadow-none'/>
+                </div>
+              </div>
+            </div>
+         </div>
+
+
     </body>
 
 </html>    
+    
+
+<script>
+  $(document).ready(function()
+  {     
+     $('#delModal').modal({
+           backdrop: 'static',
+           keyboard: false
+     });
+
+     $(document).on('click','.del_btn',function()
+     {
+         var id = $(this).attr("id");
+         //$(this).attr("id","none");
+         $("#delete_info .alert-id").html("Do you really want to remove record with ID : "+id+" ?");
+         $(".alert-id").attr("id",id);
+         //$("#Delete_Modal").modal('show');  
+     });
+
+     $(document).on('click','.del_confirm', function()
+     {
+   	   var id = $(".alert-id").attr("id");
+       //$(".alert-id").attr("id","none"); 
+       $.ajax({
+              url:"process_feedback.php",
+              method:"POST",
+              data:{action:'delete',id:id},
+              success:function(data)
+              {
+              	 $('#delete_info').html(data);
+                 $('#delete_footer').hide();
+                 //$('#Delete_Modal').modal('show');                             
+              }
+           });   
+     });
+
+  });
+</script>
     

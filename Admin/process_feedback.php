@@ -3,7 +3,7 @@
     include("../connection.php");
     if($_POST["action"] == "delete")
     {
-        $query = "DELETE FROM doctor WHERE id = '".$_POST["id"]."'";
+        $query = "DELETE FROM feedback WHERE id = '".$_POST["id"]."'";
         $res = mysqli_query($conn,$query);
         $nr = mysqli_affected_rows($conn);
         if($nr == 1)
@@ -17,17 +17,4 @@
             echo "<div class='d-flex flex-row-reverse'> <button class='btn btn-sm btn-danger float-right shadow-none' onclick='location.reload();'>Close</button> </div>";     
         }
     }
-    else
-    {
-        $status="";
-        extract($_POST);       
-        $sql = "insert into doctor(name,age,gender,speciality,mobile,email,address) values('$name',$age,'$gender','$speciality','$mobile','$emailid','$address')";
-        $res = mysqli_query($conn,$sql);
-        if($res)
-        {
-            $status = 1;
-        } 
-        else { $status = 0; }
-        echo $status;
-    }    
-?>
+?>   

@@ -5,6 +5,7 @@
     extract($_POST);
     session_start();
     
+    date_default_timezone_set('Asia/Kolkata');
     $sql = "SELECT id from health where id='".$_SESSION['user']."'";
     $res = mysqli_query($conn,$sql);
     $nr = mysqli_num_rows($res);

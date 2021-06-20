@@ -18,7 +18,7 @@
 
     </head>
    
-    <body class="p-5 bg-danger">
+    <body class="p-5" style="background-color: #ff4d4d;">
         
         <div class="container mb-4 shadow rounded" style="background-color: white;">
             <div class="row text-center py-3">

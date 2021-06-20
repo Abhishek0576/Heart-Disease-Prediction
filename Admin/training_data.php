@@ -11,7 +11,7 @@
 <html>
   
     <head> 
-        <title> Heart Disease Prediction | Admin </title> 
+        <title> Admin | TrainingData Details </title> 
         <link rel="stylesheet" href="../bootstrap5/css/bootstrap.min.css">
         <script src="../bootstrap5/js/bootstrap.bundle.js"> </script>
         <link rel="stylesheet" href="../Font-Awesome/css/all.css">
@@ -77,7 +77,7 @@
 
     </head>
    
-    <body class="p-5 bg-danger"> 
+    <body class="p-5" style="background-color: #ff4d4d;"> 
 
         <div class="container rounded shadow" style="background-color: #fefefe;"> 
             
@@ -160,8 +160,6 @@ $(document).ready(function()
     $("#select_tdata").change(function()
     {
        var tableName = $.trim($("#select_tdata option:selected").val());
-       //alert(tableName);
-
        if(tableName === 'heart_statlog_cleveland_hungary_final.csv')
        {
           $("#tData1").removeClass('d-none');

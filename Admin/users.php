@@ -11,7 +11,7 @@
 <html>
   
     <head> 
-        <title> Heart Disease Prediction | Admin </title> 
+        <title> Admin | User Details </title> 
         <link rel="stylesheet" href="../bootstrap5/css/bootstrap.min.css">
         <script src="../bootstrap5/js/bootstrap.bundle.js"> </script>
         <link rel="stylesheet" href="../Font-Awesome/css/all.css">
@@ -40,10 +40,11 @@
             table { border:1px solid seagreen; height: 380px; display: block; overflow: scroll; }
             th{
               font-weight: 500;
-              font-size: 11px;
+              font-size: 11.5px;
               padding: 24px;
               text-transform: uppercase;
             }
+            th.item { color:#555; }
             td{
               font-weight: 300;
               font-size: 10px;
@@ -66,7 +67,7 @@
 
     </head>
    
-    <body class="p-5 bg-danger">
+    <body class="p-5" style="background-color: #ff4d4d;">
 
         <?php
             //$output = shell_exec("python temp.py");
@@ -128,8 +129,7 @@
                               <th class='text-center px-5 py-3'>Gender</th>
                               <th class='text-center px-5 py-3'>Mobile</th>
                               <th class='text-center px-5 py-3'>Email</th>
-                              <th class='text-center px-4 py-3'>Address</th>
-                              <th class='text-center px-4 py-3'> Action</th>
+                              <th class='text-center px-5 py-3'>Address</th>
                         </thead></tr>";
                      
                      echo "<tbody>";
@@ -138,21 +138,14 @@
                      {
                          $date = str_replace('-','/',$row['date']);
                            echo "<tr>
-                                   <th class='text-center px-4 py-3'>".$row['id']."</th>
-                                   <th class='text-center px-5 py-3'>".$row['name']."</th>
-                                   <th class='text-center px-5 py-3'>".$row['age']."</th>
-                                   <th class='text-center px-5 py-3'>".$row['gender']."</th>
-                                   <th class='text-center px-5 py-3'>".$row['mobile']."</th> 
-                                   <th class='text-center px-5 py-3'>".$row['email']."</th> 
-                                   <th class='text-center px-4 py-3'>".$row['address']."</th>
-                                   <th class='text-center px-4 py-3'> 
-                                      <div class='btn-group'>   
-                                         <a class='btn btn-sm btn-success msg_btn rounded' data-toggle='modal' data-target='#Message_Modal' id='$row[fid]'> <i class='fa fa-comment'></i> </a>
-                                         &nbsp;
-                                         <a class='btn btn-sm btn-danger del_btn rounded' data-toggle='modal' data-target='#Delete_Modal' id='$row[fid]'> <i class='fa fa-trash'></i> </a>
-                                      </div>  
-                                   </th>
-                                </td>   
+                                   <th class='text-center px-4 py-3 item'>".$row['id']."</th>
+                                   <th class='text-center px-5 py-3 item'>".$row['name']."</th>
+                                   <th class='text-center px-5 py-3 item'>".$row['age']."</th>
+                                   <th class='text-center px-5 py-3 item'>".$row['gender']."</th>
+                                   <th class='text-center px-5 py-3 item'>".$row['mobile']."</th> 
+                                   <th class='text-center px-5 py-3 item'>".$row['email']."</th> 
+                                   <th class='text-center px-5 py-3 item'>".$row['address']."</th>
+                                </td>
                                </tr>";
                      }
                      echo "</tbody> </table>";
@@ -171,39 +164,39 @@
                  <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
                </div>
                
-               <div class="modal-body border-0">
-                 <form class='p-4' id="doctor_form">  
+               <div class="modal-body mb-0 border-0">
+                 <form class='px-4 py-0' id="doctor_form">  
                      <div class="row"> 
                          <div class="form-group mb-4">   
                                      <label class="mb-1"> Name </label>
-                                     <input type="text" id="name" name="name" class="form-control form-control-sm" required /> 
+                                     <input type="text" id="name" name="name" class="form-control form-control-sm shadow-none" required /> 
                          </div> 
                          <div class="form-group mb-4 col-md-6"> 
                                      <label class="mb-1"> Age </label>
-                                     <input type="number" id="age" name="age" min="25" max="60" class="form-control form-control-sm" required /> 
+                                     <input type="number" id="age" name="age" min="25" max="60" class="form-control form-control-sm shadow-none" required /> 
                          </div>     
                          <div class="form-group mb-4 col-md-6">           
                                      <label class="mb-1"> Gender </label>
-                                     <select class="form-select form-select-sm form-control" id="gender" name="gender">
+                                     <select class="form-select form-select-sm form-control shadow-none" id="gender" name="gender">
                                        <option value="Male">Male</option>
                                        <option value="Female">Female</option>
                                      </select> 
                          </div>
                          <div class="form-group mb-4">           
                                      <label class="mb-1"> Specialization </label>
-                                     <input type="text" id="speciality" name="speciality" class="form-control form-control-sm" required />  
+                                     <input type="text" id="speciality" name="speciality" class="form-control form-control-sm shadow-none" required />  
                          </div> 
                          <div class="form-group mb-4">           
                                      <label class="mb-1"> Mobile </label>
-                                     <input type="text" id="mobile" name="mobile" class="form-control form-control-sm" maxlength="10" required />  
+                                     <input type="text" id="mobile" name="mobile" class="form-control form-control-sm shadow-none" maxlength="10" required />  
                          </div>
                          <div class="form-group mb-4">           
                                      <label class="mb-1"> Email ID </label>
-                                     <input type="text" id="emailid" name="emailid" class="form-control form-control-sm" required />  
+                                     <input type="text" id="emailid" name="emailid" class="form-control form-control-sm shadow-none" required />  
                          </div>
                          <div class="form-group mb-4">    
                                     <label class="mb-1"> Address </label>
-                                    <textarea id="address" name="address" required size="120" maxlength="120" placeholder="" rows="6" class="form-control form-control-sm" required></textarea>
+                                    <textarea id="address" name="address" required size="120" maxlength="120" placeholder="" rows="6" class="form-control form-control-sm shadow-none" required></textarea>
                          </div>
                          <div class="form-group d-flex flex-row-reverse">
                               <input type="submit" class="btn-sm shadow-none btn-success mx-1" value="submit" name="submit" />
@@ -212,10 +205,6 @@
                     </div>
 
                   </form>
-               </div>
-
-               <div class="modal-footer">
-                 
                </div>
 
              </div>

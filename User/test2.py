@@ -1,6 +1,8 @@
 import sys
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 from model import *
 
 age = int(sys.argv[1])
@@ -117,9 +119,9 @@ print(per)
 d = {}
 
 if(per < 50 ):
-     d["Logistic Regression"] = "Not Suffered"
+     d["Logistic Regression"] = "Not Suffering"
 else:
-     d["Logistic Regression"] = "Suffered from Heart Disease"
+     d["Logistic Regression"] = "Suffering from Heart Disease"
 
 
 #####################################################################################
@@ -132,9 +134,9 @@ score_knn = knn.score(x_test.T, y_test.T)*100
 prediction = knn.predict(test_norm.T)
 per = prediction[0]
 if(per == 0):
-     d["KNeighborsClassifier"] = "Not Suffered"
+     d["KNeighborsClassifier"] = "Not Suffering"
 elif(per == 1):
-     d["KNeighborsClassifier"] = "Suffered from Heart Disease"
+     d["KNeighborsClassifier"] = "Suffering from Heart Disease"
 
 
 from sklearn.svm import SVC
@@ -144,9 +146,9 @@ score_svm = svm.score(x_test.T, y_test.T)*100
 prediction = svm.predict(test_norm.T)
 per = prediction[0]
 if(per == 0):
-     d["SVM"] = "Not Suffered"
+     d["SVM"] = "Not Suffering"
 elif(per == 1):
-     d["SVM"] = "Suffered from Heart Disease"
+     d["SVM"] = "Suffering from Heart Disease"
 
 
 from sklearn.naive_bayes import GaussianNB
@@ -156,9 +158,9 @@ score_nb = nb.score(x_test.T, y_test.T)*100
 prediction = nb.predict(test_norm.T)
 per = prediction[0]
 if(per == 0):
-     d["Naive Bayes"] = "Not Suffered"
+     d["Naive Bayes"] = "Not Suffering"
 elif(per == 1):
-     d["Naive Bayes"] = "Suffered from Heart Disease"
+     d["Naive Bayes"] = "Suffering from Heart Disease"
 
 
 methods = ["Logistic Regression", "KNN", "SVM", "Naive Bayes"]
@@ -182,15 +184,18 @@ plt.pie(x=accuracy, labels=methods)
 plt.savefig("../Images/piechart.png")
 
 i=0
-html = """<html><table class='table-bordered'>
-                <tr><th>Algorithm Name</th> <th>Accuracy Score</th> <th>Result</th></tr>"""
+html = """<html><table class='table-bordered border-secondary caption-top rounded mt-5 mb-0'>
+                <caption>COMPARISON OF CLASSIFICATION MODELS</caption>
+                <tr> <th style='text-align:center;'>SNO</th> <th style='text-align:center;'>Algorithm Name</th> <th style='text-align:center;'>Accuracy Score</th> <th style='text-align:center;'>Result</th></tr>"""
 for key,value in d.items():
-      html += "<tr><td>{}</td>".format(key)
+      html += "<tr>"
+      html += "<td style='text-align:center;'>{}</td>".format(i+1)
+      html += "<td style='text-align:center;'>{}</td>".format(key)
       html += "<td style='text-align:center;'>{}</td>".format(round(accuracy[i],2))
-      if value == "Not Suffered":
-         html += "<td style='background-color:#04AA6D; color:#fff;'>{}</td>".format(value)
+      if value == "Not Suffering":
+         html += "<td style='text-align:center; background-color:#04AA6D; color:#fff;'>{}</td>".format(value)
       else:
-         html += "<td style='background-color:#FF3300; color:#fff;'>{}</td>".format(value)
+         html += "<td style='text-align:center; background-color:#FF3300; color:#fff;'>{}</td>".format(value)
       html += "</tr>"
       i += 1
 html += "</table></html>"
